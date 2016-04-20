@@ -2,8 +2,10 @@ package towerOfHanoi;
 
 public class TowerOfHanoi {
 	private int teller = 0;
+	private int rTeller = 0;
 	
 	public void flyttDisker(int topN, char fra, char inter, char til) {
+		rTeller++;
 		if (topN == 1)
 			print("Disk 1 fra " + fra + " til " + til);
 	    
@@ -22,10 +24,15 @@ public class TowerOfHanoi {
 		return this.teller;
 	}
 	
+	public int getRTeller(){
+		return this.rTeller;
+	}
+	
 	public static void main(String[] args) {
 		TowerOfHanoi tower = new TowerOfHanoi();
 		int nDisks = 3;
 		tower.flyttDisker(nDisks, 'A', 'B', 'C');
-		System.out.println("Det ble gjort " +tower.getTeller() + " flyttinger.");
+		System.out.println("Det ble gjort " +tower.getTeller() + " flyttinger.\n"
+				+ "Det ble gjort " + tower.getRTeller() + " rekusjive kall.");
 	}
 }
